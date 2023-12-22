@@ -1,7 +1,7 @@
 import { ResizableBox } from "react-resizable";
 import { useState } from "react";
 
-interface MyComponentProps {
+interface FacilityProps {
     uniqueId: number;
     name: string;
     parentWidth: number;
@@ -9,13 +9,13 @@ interface MyComponentProps {
     child: { key: number; name: string }[];
 }
 
-export default function Plan({
+export default function Facility({
     uniqueId,
     name,
     parentWidth,
     parentHeight,
     child,
-}: MyComponentProps) {
+}: FacilityProps) {
     const [width, setWidth] = useState(1000 - (uniqueId - 1) * 50);
     const [height, setHeight] = useState(800 - (uniqueId - 1) * 50);
     let minWidth;
@@ -39,7 +39,7 @@ export default function Plan({
         >
             <div className="text-black p-2 font-bold">{name}</div>
             {child.length !== 0 ? (
-                <Plan
+                <Facility
                     uniqueId={child[0].key + 1}
                     name={child[0].name}
                     parentWidth={width - 50} // need to make dynamic and responsive so it doesnt break.
